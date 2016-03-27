@@ -4,7 +4,8 @@ import headset
 import time
 import urllib2
 import numpy as np
-import msvcrt
+import kbhit
+
 imprintSham=False
 current_milli_time = lambda: int(round(time.time() * 1000))
 stimModes={"F4":0,"C4":1,"O2":2,"C3":3,"F3":4,"O1":5,"Reference electrode":6}
@@ -76,12 +77,12 @@ def recordData(filename):
     headset.flushData()
     print("Data aquistion is running, press space to stop.")
     samples=0
-    while msvcrt.kbhit():
-        msvcrt.getch()
+    while kbhit.kbhit():
+        kbhit.getch()
     while keepRunning:
         samples=samples+1
-        if msvcrt.kbhit():
-            theKey=msvcrt.getch()
+        if kbhit.kbhit():
+            theKey=kbhit.getch()
             if " " in theKey:
                 keepRunning=False
                 print("Interrupt")
@@ -761,8 +762,8 @@ while True:
                     keepRunning=True
                     displayCurrent=False
                     while keepRunning:
-                        if msvcrt.kbhit():
-                            thechar=msvcrt.getch()
+                        if kbhit.kbhit():
+                            thechar=kbhit.getch()
                             if " " in thechar:
                                 keepRunning=False
                             if "c" in thechar:
