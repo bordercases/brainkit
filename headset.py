@@ -30,9 +30,10 @@ def startStim(mode):
     
 def flushData():
     ser.flushInput()
-def getPorts():
     
+def getPorts():    
     return (list(serial.tools.list_ports.comports()))
+
 def getData():
         theData=ser.readline()
         if not stimulator:
