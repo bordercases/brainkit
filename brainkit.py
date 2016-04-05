@@ -866,12 +866,9 @@ while True:
             else:
                 print(str(thePorts))
                 portSelect=eg.buttonbox(title="Stimulator port", msg="Select the port to which the stimulator is connected. If you do not know the port, connected or unplug the stimultor and click refresh", choices=[port.__str__() for port in thePorts]+["Refresh"])
-        if portSelect and "Refresh" not in portSelect:            
-            accepted=True
-            #choice=portSelect
-            # parse the device selection
-            choice=[port for port in thePorts if port.device == portSelect.split()[0]]
-
+            if portSelect and "Refresh" not in portSelect:
+                accepted=True
+                choice=[ port for port in thePorts if port.device == portSelect.split()[0] ]
         if "Cancel" not in portSelect:
                 try:
                     print(str(choice))
